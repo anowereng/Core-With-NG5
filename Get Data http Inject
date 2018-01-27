@@ -1,0 +1,57 @@
+   [HttpGet("[action]")]
+        public IEnumerable<Item> Products()
+        {
+
+            //List<string> item = new List<string>();
+            //item.Add("Mango");
+
+            //Product model = new Product();
+            //model.GetProduct();
+            // IEnumerable<Product> list = null;
+            //return list;
+            //IEnumerable<string> list = null;
+         
+            List<Item> vTypeItem = new List<Item>()
+            {
+                new Item { ItemId = 0, ItemCode = "P0001",ItemName="Demo" },
+                 new Item { ItemId = 1, ItemCode = "P0001",ItemName="Demo" },
+                  new Item { ItemId = 2, ItemCode = "P0001",ItemName="Demo" },
+                   new Item { ItemId = 3, ItemCode = "P0001",ItemName="Demo" },
+                    new Item { ItemId = 4, ItemCode = "P0001",ItemName="Demo" },
+                     new Item { ItemId = 5, ItemCode = "P0001",ItemName="Demo" }
+
+            };
+            IEnumerable<Item> list = (IEnumerable<Item>)vTypeItem;
+            //list = item;
+            return list;
+        }
+        
+        ------------  TS ----------
+        
+import { Component, Inject, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
+@Component({
+  selector: 'product-data',
+  templateUrl: './product.component.html'
+})
+//export class ProductComponent {
+//  public products: Product[];
+
+//  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+//    http.get<Product[]>(baseUrl + 'api/Product/Products').subscribe(result => {
+//      this.products = result;
+//    }, error => console.error(error));
+//  }
+//}
+export class ProductComponent implements OnInit {
+  constructor(private _httpService: Http) { }
+  title: string = "SHANU";
+  Items=[];
+  ngOnInit() {
+    this._httpService.get('api/Product/Get').subscribe(values => {
+      this.Items = values.json() as string[];
+    });
+
+  }
+} 
