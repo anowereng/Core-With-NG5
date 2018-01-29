@@ -1,0 +1,16 @@
+{
+
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "Microsoft": "Information",
+      "System": "Information"
+    }
+  },
+  "ConnectionStrings": {
+    "MyConString": "Server=Softify-PC2;Database=GTRIMS;User Id=sa;Password=007",
+    "ProviderName": ""
+    //"MyConString": "Server=Softify-PC2;Database=GTRIMS;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}
